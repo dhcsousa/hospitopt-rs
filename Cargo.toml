@@ -1,6 +1,8 @@
 [package]
 name = "hospitopt-rs"
+authors = ["Daniel Sousa <danielsoussa@gmail.com>"]
 version = "0.1.0"
 edition = "2024"
 
-[dependencies]
+[workspace]
+members = [".", "entity", "migration"]
