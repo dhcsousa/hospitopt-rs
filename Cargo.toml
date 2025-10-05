@@ -1,6 +1,25 @@
+[workspace]
+members = ["entity", "migration"]
+resolver = "2"
+
 [package]
 name = "hospitopt-rs"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+entity = { path = "entity" }
+sea-orm = "1.1.16"
+sea-orm-migration = "1.1.16"
+
+# [dependencies]
+# sea-orm = { version = "1.0", features = ["macros", "runtime-tokio-rustls", "sqlx-postgres"] }
+# sea-orm-migration = "1.0"
+# async-trait = "0.1"
+# tokio = { version = "1.37", features = ["macros", "rt-multi-thread"] }
+# dotenvy = "0.15"
+# thiserror = "1.0"
+
+# [[bin]]
+# name = "migrate"
+# path = "src/bin/migrate.rs"
