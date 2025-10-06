@@ -97,8 +97,8 @@ fn create_hospitals_table() -> TableCreateStatement {
         .if_not_exists()
         .col(pk_auto(Hospitals::Id))
         .col(string(Hospitals::LocationName).not_null())
-        .col(ColumnDef::new(Hospitals::Latitude).double().null())
-        .col(ColumnDef::new(Hospitals::Longitude).double().null())
+        .col(ColumnDef::new(Hospitals::Latitude).double().not_null())
+        .col(ColumnDef::new(Hospitals::Longitude).double().not_null())
         .col(ColumnDef::new(Hospitals::BedCapacity).integer().not_null())
         .to_owned()
 }
