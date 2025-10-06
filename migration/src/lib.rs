@@ -2,6 +2,7 @@ pub use sea_orm_migration::prelude::*;
 
 mod m20251005_195352_hospitals;
 mod m20251006_210502_patients;
+mod m20251006_211530_beds_per_speciality;
 
 pub struct Migrator;
 
@@ -11,6 +12,7 @@ impl MigratorTrait for Migrator {
         vec![
             Box::new(m20251005_195352_hospitals::Migration),
             Box::new(m20251006_210502_patients::Migration),
+            Box::new(m20251006_211530_beds_per_speciality::Migration),
         ]
     }
 }

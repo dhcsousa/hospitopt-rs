@@ -9,14 +9,14 @@ impl MigrationTrait for Migration {
         manager.create_table(create_hospitals_table()).await?;
 
         manager
-            .create_table(create_hospital_specialties_table())
+            .create_table(create_hospital_specialities_table())
             .await?;
 
         manager
             .create_foreign_key(
                 ForeignKey::create()
-                    .name("fk-hospital_specialties-hospital")
-                    .from(HospitalSpecialties::Table, HospitalSpecialties::HospitalId)
+                    .name("fk-hospital_specialities-hospital")
+                    .from(HospitalSpecialities::Table, HospitalSpecialities::HospitalId)
                     .to(Hospitals::Table, Hospitals::Id)
                     .on_delete(ForeignKeyAction::Cascade)
                     .on_update(ForeignKeyAction::Cascade)
@@ -28,9 +28,9 @@ impl MigrationTrait for Migration {
             .create_index(
                 Index::create()
                     .if_not_exists()
-                    .name("idx-hospital_specialties-hospital_id")
-                    .table(HospitalSpecialties::Table)
-                    .col(HospitalSpecialties::HospitalId)
+                    .name("idx-hospital_specialities-hospital_id")
+                    .table(HospitalSpecialities::Table)
+                    .col(HospitalSpecialities::HospitalId)
                     .to_owned(),
             )
             .await?;
@@ -39,10 +39,10 @@ impl MigrationTrait for Migration {
             .create_index(
                 Index::create()
                     .if_not_exists()
-                    .name("uq-hospital_specialties-hospital-specialty")
-                    .table(HospitalSpecialties::Table)
-                    .col(HospitalSpecialties::HospitalId)
-                    .col(HospitalSpecialties::SpecialtyName)
+                    .name("uq-hospital_specialities-hospital-speciality")
+                    .table(HospitalSpecialities::Table)
+                    .col(HospitalSpecialities::HospitalId)
+                    .col(HospitalSpecialities::SpecialityName)
                     .unique()
                     .to_owned(),
             )
@@ -55,8 +55,8 @@ impl MigrationTrait for Migration {
         manager
             .drop_index(
                 Index::drop()
-                    .name("uq-hospital_specialties-hospital-specialty")
-                    .table(HospitalSpecialties::Table)
+                    .name("uq-hospital_specialities-hospital-speciality")
+                    .table(HospitalSpecialities::Table)
                     .to_owned(),
             )
             .await?;
@@ -64,8 +64,8 @@ impl MigrationTrait for Migration {
         manager
             .drop_index(
                 Index::drop()
-                    .name("idx-hospital_specialties-hospital_id")
-                    .table(HospitalSpecialties::Table)
+                    .name("idx-hospital_specialities-hospital_id")
+                    .table(HospitalSpecialities::Table)
                     .to_owned(),
             )
             .await?;
@@ -73,14 +73,14 @@ impl MigrationTrait for Migration {
         manager
             .drop_foreign_key(
                 ForeignKey::drop()
-                    .name("fk-hospital_specialties-hospital")
-                    .table(HospitalSpecialties::Table)
+                    .name("fk-hospital_specialities-hospital")
+                    .table(HospitalSpecialities::Table)
                     .to_owned(),
             )
             .await?;
 
         manager
-            .drop_table(Table::drop().table(HospitalSpecialties::Table).to_owned())
+            .drop_table(Table::drop().table(HospitalSpecialities::Table).to_owned())
             .await?;
 
         manager
@@ -103,23 +103,23 @@ fn create_hospitals_table() -> TableCreateStatement {
         .to_owned()
 }
 
-fn create_hospital_specialties_table() -> TableCreateStatement {
+fn create_hospital_specialities_table() -> TableCreateStatement {
     Table::create()
-        .table(HospitalSpecialties::Table)
+        .table(HospitalSpecialities::Table)
         .if_not_exists()
-        .col(pk_auto(HospitalSpecialties::Id))
+        .col(pk_auto(HospitalSpecialities::Id))
         .col(
-            ColumnDef::new(HospitalSpecialties::HospitalId)
+            ColumnDef::new(HospitalSpecialities::HospitalId)
                 .integer()
                 .not_null(),
         )
         .col(
-            ColumnDef::new(HospitalSpecialties::SpecialtyName)
+            ColumnDef::new(HospitalSpecialities::SpecialityName)
                 .string()
                 .not_null(),
         )
         .col(
-            ColumnDef::new(HospitalSpecialties::WaitingTimeSeconds)
+            ColumnDef::new(HospitalSpecialities::WaitingTimeSeconds)
                 .big_integer()
                 .not_null(),
         )
@@ -138,11 +138,11 @@ enum Hospitals {
 }
 
 #[derive(DeriveIden)]
-enum HospitalSpecialties {
-    #[sea_orm(iden = "hospital_specialties")]
+enum HospitalSpecialities {
+    #[sea_orm(iden = "hospital_specialities")]
     Table,
     Id,
     HospitalId,
-    SpecialtyName,
+    SpecialityName,
     WaitingTimeSeconds,
 }
