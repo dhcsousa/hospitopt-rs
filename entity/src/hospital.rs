@@ -6,8 +6,8 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
     pub location_name: String,
-    pub latitude: Option<f64>,
-    pub longitude: Option<f64>,
+    pub latitude: f64,
+    pub longitude: f64,
     pub bed_capacity: i32,
 }
 
