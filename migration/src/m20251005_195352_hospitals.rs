@@ -16,7 +16,10 @@ impl MigrationTrait for Migration {
             .create_foreign_key(
                 ForeignKey::create()
                     .name("fk-hospital_specialities-hospital")
-                    .from(HospitalSpecialities::Table, HospitalSpecialities::HospitalId)
+                    .from(
+                        HospitalSpecialities::Table,
+                        HospitalSpecialities::HospitalId,
+                    )
                     .to(Hospitals::Table, Hospitals::Id)
                     .on_delete(ForeignKeyAction::Cascade)
                     .on_update(ForeignKeyAction::Cascade)

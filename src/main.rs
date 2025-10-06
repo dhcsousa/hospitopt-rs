@@ -38,7 +38,10 @@ async fn print_hospital_specialities(db: &DatabaseConnection) -> Result<(), DbEr
     if specialities.is_empty() {
         println!("(no hospital specialities found)");
     } else {
-        println!("\n== Hospital Specialities ({} records) ==", specialities.len());
+            println!(
+                "\n== Hospital Specialities ({} records) ==",
+                specialities.len(),
+            );
         for speciality in specialities {
             println!("{:#?}", speciality);
         }
