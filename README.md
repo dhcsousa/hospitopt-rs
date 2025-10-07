@@ -41,4 +41,12 @@ Rust-based optimization project that uses constraint programming to maximize the
 	cargo run
 	```
 
+5. Seed curated reference data (optional)
+
+	```shell
+	cargo run -p scripts
+	```
+
+	This command clears the existing `hospitals` and `hospital_specialities` tables and inserts a curated dataset covering eight flagship hospitals across Lisbon. It uses coordinates sourced from the public GeoJSON dataset at [dados.gov.pt](https://dados.gov.pt/pt/datasets/r/214f62f9-ff13-48d2-ae80-c33879c441fa) and fills in illustrative bed capacities plus Manchester triage wait targets so you can experiment with the optimizer immediately.
+
 When you're done developing, stop the database container with `docker compose down` (add `-v` to prune the named volume).

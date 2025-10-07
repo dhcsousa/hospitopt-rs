@@ -6,7 +6,7 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
     pub hospital_id: i32,
-    pub speciality_name: String,
+    pub triage_level: String,
     pub waiting_time_seconds: i64,
     pub beds_capacity: i32,
 }
