@@ -1,7 +1,6 @@
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use entity::{
-    hospital,
-    patient,
+    hospital, patient,
     prelude::{Hospital, HospitalSpeciality, Patient},
 };
 use sea_orm::{Database, DatabaseConnection, EntityTrait, QueryOrder};
@@ -71,7 +70,7 @@ async fn print_hospital_snapshot(db: &DatabaseConnection) -> Result<()> {
             lon = hospital.longitude,
         );
 
-    triages.sort_by_key(|triage| triage_rank(&triage.triage_level, TRIAGE_LEVELS));
+        triages.sort_by_key(|triage| triage_rank(&triage.triage_level, TRIAGE_LEVELS));
 
         for triage in triages {
             let minutes = triage.waiting_time_seconds / 60;

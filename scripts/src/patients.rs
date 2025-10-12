@@ -2,11 +2,7 @@ use anyhow::Result;
 use entity::{patient, prelude::Patient};
 use rand::Rng;
 use sea_orm::{
-    ActiveModelTrait,
-    ActiveValue::Set,
-    DatabaseConnection,
-    EntityTrait,
-    PaginatorTrait,
+    ActiveModelTrait, ActiveValue::Set, DatabaseConnection, EntityTrait, PaginatorTrait,
     TransactionTrait,
 };
 use std::{fmt, str::FromStr};

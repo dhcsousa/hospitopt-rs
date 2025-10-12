@@ -172,7 +172,7 @@ fn build_manchester_levels(total_beds: i32, rng: &mut impl Rng) -> Vec<TriageLev
 
     let sampled_weights: Vec<f32> = LEVEL_CONFIG
         .iter()
-    .map(|cfg| rng.random_range(cfg.share_min..=cfg.share_max))
+        .map(|cfg| rng.random_range(cfg.share_min..=cfg.share_max))
         .collect();
 
     let total_weight: f32 = sampled_weights.iter().sum();
