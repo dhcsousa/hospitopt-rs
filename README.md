@@ -49,4 +49,12 @@ Rust-based optimization project that uses constraint programming to maximize the
 
 	This command clears the existing `hospitals` and `hospital_specialities` tables and inserts a curated dataset covering eight flagship hospitals across Lisbon. It uses coordinates sourced from the public GeoJSON dataset at [dados.gov.pt](https://dados.gov.pt/pt/datasets/r/214f62f9-ff13-48d2-ae80-c33879c441fa) and fills in illustrative bed capacities plus Manchester triage wait targets so you can experiment with the optimizer immediately.
 
+	Need to add more synthetic patients without wiping the previous ones? Set the mode to `append` when running the script:
+
+	```shell
+	PATIENT_SEED_MODE=append cargo run -p scripts
+	```
+
+	The default mode is `reset`, which keeps the deterministic hospital snapshot while refreshing patients on every run.
+
 When you're done developing, stop the database container with `docker compose down` (add `-v` to prune the named volume).
