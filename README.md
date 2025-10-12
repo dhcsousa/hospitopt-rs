@@ -11,7 +11,7 @@ Rust-based optimization project that uses constraint programming to maximize the
 
 ## Getting started
 
-1. Start you dotenv file
+1. Start your dotenv file and modify it accordingly, including your Google API key
 
 	```shell
 	cp .env.example .env
@@ -58,3 +58,13 @@ Rust-based optimization project that uses constraint programming to maximize the
 	The default mode is `reset`, which keeps the deterministic hospital snapshot while refreshing patients on every run.
 
 When you're done developing, stop the database container with `docker compose down` (add `-v` to prune the named volume).
+
+## Google API for Distance Matrix
+
+Since there are no officially supported Rust crates for the [Google Maps Routes API](https://developers.google.com/maps/documentation/routes), this project ships a lightweight client located at `src/google_maps/routes.rs`. If you need help setting up a Google Cloud project and enabling the Routes API, check out [this guide](https://developers.google.com/maps/documentation/routes/get-api-key).
+
+Add your API key to the environment (for example in `.env`):
+
+```dotenv
+GOOGLE_API_KEY=your_api_key
+```
